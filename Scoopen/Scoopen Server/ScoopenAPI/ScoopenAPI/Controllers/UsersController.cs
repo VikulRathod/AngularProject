@@ -17,6 +17,7 @@ namespace ScoopenAPI.Controllers
         private ScoopenDB db = new ScoopenDB();
 
         // GET: api/Users
+        [HttpGet]
         public IQueryable<User> GetUsers()
         {
             return db.Users;
