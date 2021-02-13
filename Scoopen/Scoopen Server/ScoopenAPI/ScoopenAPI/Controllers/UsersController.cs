@@ -26,10 +26,11 @@ namespace ScoopenAPI.Controllers
         }
 
         // GET: api/Users
+        [HttpGet]
         public IEnumerable<User> GetUsers()
         {            
             return _repository.GetAllRecords();
-        }
+                }
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
