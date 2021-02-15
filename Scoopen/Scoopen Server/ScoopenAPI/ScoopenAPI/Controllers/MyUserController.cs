@@ -9,5 +9,10 @@ namespace ScoopenAPI.Controllers
 {
     public class MyUserController : ApiController
     {
+
+        public IHttpActionResult Index()
+        {
+            return Ok("Vaibhav");
+        }
     }
 }
