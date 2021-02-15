@@ -10,6 +10,7 @@ namespace ScoopenAPI.Controllers
 {
     public class LoginController : ApiController
     {
+        public string UserName {get;set;}
         public IHttpActionResult Login(LoginRequest request)
         {
             // bll -> dal -> sp 
