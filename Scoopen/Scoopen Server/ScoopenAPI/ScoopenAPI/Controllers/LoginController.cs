@@ -9,5 +9,9 @@ namespace ScoopenAPI.Controllers
 {
     public class LoginController : ApiController
     {
+        public bool Login()
+        {
+            return true;
+        }
     }
 }
