@@ -9,24 +9,35 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ScoopenAPI.Models;
+using ScoopenAPI.Models.Repository;
 
 namespace ScoopenAPI.Controllers
 {
     public class UsersController : ApiController
     {
         private ScoopenDB db = new ScoopenDB();
+        GenericUnitOkWork _unitOfWork;
+        GenericRepository<User> _repository;
+
+        public UsersController()
+        {
+            _unitOfWork = new GenericUnitOkWork();
+            _repository = _unitOfWork.GetRepositoryInstance<User>();
+        }
 
         // GET: api/Users
-        public IQueryable<User> GetUsers()
-        {
-            return db.Users;
-        }
+        [HttpGet]
+        public IEnumerable<User> GetUsers()
+        {            
+            return _repository.GetAllRecords();
+                }
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
         {
-            User user = db.Users.Find(id);
+            //User user = db.Users.Find(id);
+            User user = _repository.GetFirstOrDefault(id);
             if (user == null)
             {
                 return NotFound();
@@ -79,11 +90,13 @@ namespace ScoopenAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Users.Add(user);
+            //db.Users.Add(user);
+            _repository.Add(user);
 
             try
             {
-                db.SaveChanges();
+                //db.SaveChanges();
+                _unitOfWork.SaveChanges();
             }
             catch (DbUpdateException)
             {
