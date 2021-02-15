@@ -9,5 +9,6 @@ namespace ScoopenAPI.Controllers
 {
     public class LoginController : ApiController
     {
+        public string username { get; set; }
     }
 }
