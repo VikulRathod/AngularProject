@@ -16,5 +16,6 @@ namespace ScoopenAPI.Controllers
             // bll -> dal -> sp 
             return Ok(true);
         }
+        public string Password { get; set; }
     }
 }
