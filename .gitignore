@@ -44,3 +44,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/Scoopen/Scoopen Server/ScoopenAPI/ScoopenAPI.Tests/obj/Debug
+/Scoopen/Scoopen Server/ScoopenAPI/.vs
+/Scoopen/Scoopen Server/ScoopenAPI/bin
+/Scoopen/Scoopen Server/ScoopenAPI/obj
+/Scoopen/Scoopen Server/ScoopenAPI/ScoopenAPI.Tests/bin
+/Scoopen/Scoopen Server/ScoopenAPI/ScoopenAPI.Tests/obj
+.suo
