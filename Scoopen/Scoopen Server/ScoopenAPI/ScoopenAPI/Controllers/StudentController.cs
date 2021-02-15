@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace ScoopenAPI.Controllers
 {
-    public class StudentController : ApiController
+    public class studentController : ApiController
     {
     }
 }
