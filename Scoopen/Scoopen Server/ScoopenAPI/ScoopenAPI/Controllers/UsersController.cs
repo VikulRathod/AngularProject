@@ -142,5 +142,9 @@ namespace ScoopenAPI.Controllers
         {
             return db.Users.Count(e => e.Id == id) > 0;
         }
+        private int add(int a,int b)
+        {
+            return a + b;
+        }
     }
 }
