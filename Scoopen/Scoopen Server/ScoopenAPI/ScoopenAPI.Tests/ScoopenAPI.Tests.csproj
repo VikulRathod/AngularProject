@@ -64,6 +64,30 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ScoopenAPI.BLL\ScoopenAPI.BLL.csproj">
+      <Project>{944c0913-a4e9-41d7-90c6-d630a3bdeabe}</Project>
+      <Name>ScoopenAPI.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScoopenAPI.DAL\ScoopenAPI.DAL.csproj">
+      <Project>{08a1b472-2b07-4243-b3f7-bb80b3b0078e}</Project>
+      <Name>ScoopenAPI.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScoopenAPI.ExternalServices\ScoopenAPI.ExternalServices.csproj">
+      <Project>{40b3347d-ada0-4f39-ac4d-4e1df1767850}</Project>
+      <Name>ScoopenAPI.ExternalServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScoopenAPI.Logs\ScoopenAPI.Logs.csproj">
+      <Project>{0f8615a3-4b42-448b-960c-7ee3b79d91e6}</Project>
+      <Name>ScoopenAPI.Logs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScoopenAPI.Models\ScoopenAPI.Models.csproj">
+      <Project>{c8f2ed82-7ff5-4430-829f-aa6ec6fdc421}</Project>
+      <Name>ScoopenAPI.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScoopenAPI.Notifications\ScoopenAPI.Notifications.csproj">
+      <Project>{b093dae0-79e0-4131-8e20-7555403928d9}</Project>
+      <Name>ScoopenAPI.Notifications</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScoopenAPI\ScoopenAPI.csproj">
       <Project>{A4A367A5-CE1E-40FE-87D2-2459666A72EE}</Project>
       <Name>ScoopenAPI</Name>

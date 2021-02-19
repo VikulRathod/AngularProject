@@ -155,7 +155,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ScoopenAPI.BLL\ScoopenAPI.BLL.csproj">
+      <Project>{944c0913-a4e9-41d7-90c6-d630a3bdeabe}</Project>
+      <Name>ScoopenAPI.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScoopenAPI.Models\ScoopenAPI.Models.csproj">
+      <Project>{c8f2ed82-7ff5-4430-829f-aa6ec6fdc421}</Project>
+      <Name>ScoopenAPI.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
