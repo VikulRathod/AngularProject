@@ -51,6 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\ActiveUser.cs" />
+    <Compile Include="Account\LoginRequest.cs" />
+    <Compile Include="Account\Role.cs" />
+    <Compile Include="Account\User.cs" />
+    <Compile Include="Account\UserAddress.cs" />
+    <Compile Include="Account\UserInfo.cs" />
+    <Compile Include="Account\UserResetPassword.cs" />
+    <Compile Include="Account\UserRole.cs" />
     <Compile Include="Custom\CustomRequiredHttpsAttribute.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Notifications\LoginDetailsSmsRequest.cs" />

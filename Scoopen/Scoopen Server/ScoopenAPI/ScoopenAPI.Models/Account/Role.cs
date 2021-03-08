@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScoopenAPI.BLL
+namespace ScoopenAPI.Models.Account
 {
-    public class Class1
+    public class Role
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -50,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountControllerDAL.cs" />
+    <Compile Include="Account\IAccountControllerDAL.cs" />
     <Compile Include="AdminRegister.cs">
       <DependentUpon>PSOSDBModel.tt</DependentUpon>
     </Compile>
@@ -68,6 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CHISDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Connection.cs" />
     <Compile Include="database_firewall_rules.cs">
       <DependentUpon>MGOSDBModel.tt</DependentUpon>
     </Compile>
@@ -80,6 +84,7 @@
     <Compile Include="Doctor.cs">
       <DependentUpon>SHMSDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExecuteScoopenDB.cs" />
     <Compile Include="f_uspDisplayAgentList_Result.cs">
       <DependentUpon>CHISDBModel.tt</DependentUpon>
     </Compile>
@@ -120,6 +125,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PSOSDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ScoopenDB.cs" />
     <Compile Include="ScoopenDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
