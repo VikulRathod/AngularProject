@@ -43,3 +43,6 @@ Notifications can be email, sms or any other media which is required
 -- On local machine I have configured it
 	-- https://dotnettutorials.net/lesson/enable-ssl-in-visual-studio-development-server/
 
+-- enabling SSL in WEB API
+	-- https://dotnettutorials.net/lesson/enable-https-in-web-api/
+

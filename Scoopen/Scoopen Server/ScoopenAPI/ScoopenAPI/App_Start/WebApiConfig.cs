@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScoopenAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -11,6 +12,9 @@ namespace ScoopenAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            
+            // This line is used to enable SSL means https protocol in web api
+            config.Filters.Add(new CustomRequireHttpsAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
