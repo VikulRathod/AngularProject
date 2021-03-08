@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="26a9b116081949c5b54bc2a43c7bc3c7" Name="Diagram1">
+        <EntityTypeShape EntityType="MGOSDBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblActiveUser" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblCity" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblCountry" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblResetPasswordRequest" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblRole" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblState" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblUserAddress" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblUserInfo" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblUserRole" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblUser" Width="1.5" PointX="8" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblVehicle" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblVehicleOwner" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblVehicleType" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.tblAdmin" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MGOSDBModel.database_firewall_rules" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="MGOSDBModel.FK__tblAdmin__CityId__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="MGOSDBModel.FK__tblAdmin__Countr__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="MGOSDBModel.FK__tblAdmin__StateI__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="MGOSDBModel.FK__tblVehicl__UserI__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="MGOSDBModel.FK__tblVehicl__Vehic__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="MGOSDBModel.FK__tblVehicl__Vehic__04E4BC85" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

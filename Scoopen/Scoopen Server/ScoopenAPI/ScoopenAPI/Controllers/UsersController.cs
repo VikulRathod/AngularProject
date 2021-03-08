@@ -25,7 +25,13 @@ namespace ScoopenAPI.Controllers
             _repository = _unitOfWork.GetRepositoryInstance<User>();
         }
 
-        // GET: api/Users
+        /// <summary>
+        /// Get All the Users
+        /// </summary>
+        /// <remarks>
+        /// Get All the User Values
+        /// </remarks>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {            

@@ -29,3 +29,17 @@ Any services which are not part of our application can be consumed from this pro
 8 - ScoopenAPI.Notifications
 This project contains all logic and code which is used to send notifications 
 Notifications can be email, sms or any other media which is required
+
+----------------------------------------------------------------------------------------
+
+-- Implemented Swagger in WEB API Project
+	-- https://dotnettutorials.net/lesson/how-to-use-swagger-in-web-api/
+
+-- Implemented CORS in WEB API Project
+	-- https://dotnettutorials.net/lesson/cross-origin-resource-sharing-web-api/
+
+-- For security we have used SSL certificate
+-- On server side it is handled and configured by Release management team
+-- On local machine I have configured it
+	-- https://dotnettutorials.net/lesson/enable-ssl-in-visual-studio-development-server/
+

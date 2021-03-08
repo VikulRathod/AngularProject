@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +50,250 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AdminRegister.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHISDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHISDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHISDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHISDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHISDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteFile.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryStatu.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor.cs">
+      <DependentUpon>SHMSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_uspDisplayAgentList_Result.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MGOSDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MGOSDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MGOSDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MGOSDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MGOSDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderStatu.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patient.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSOSDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSOSDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PSOSDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PSOSDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSOSDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ScoopenDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScoopenDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScoopenDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CIMSDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CIMSDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SHMSDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHMSDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SHMSDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHMSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SHMSDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHMSDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="spAuthenticateUser_Result.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetAllLocakedUserAccounts_Result.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetSurgeon_Result.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spResetPassword_Result.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAcademicDetail.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblActiveUser.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAddAgent.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAddSurgeon.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAdmin.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAgent.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCity.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCompany.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCountry.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDepartment.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDesignation.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDrProfile.cs">
+      <DependentUpon>SHMSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEligibility.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblGender.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblJobDescription.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblJobTitle.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrder.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPackage.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblResetPasswordRequest.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRole.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSelectionProcess.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSkillSet.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSpecilization.cs">
+      <DependentUpon>SHMSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblState.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblStudent.cs">
+      <DependentUpon>ScoopenDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUpload.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUserAddress.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUserInfo.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUserRegister.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUserRole.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblVehicle.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblVehicleOwner.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblVehicleType.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TemplatSearch.cs">
+      <DependentUpon>PSOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uspSurgeonList_Result.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_DriversList_Result.cs">
+      <DependentUpon>MGOSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetDoctors_Result.cs">
+      <DependentUpon>SHMSDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListOfAgent_Result.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_sample_Result.cs">
+      <DependentUpon>CHISDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_SpDetails_Result.cs">
+      <DependentUpon>SHMSDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScoopenAPI.Logs\ScoopenAPI.Logs.csproj">
@@ -53,6 +304,100 @@
       <Project>{c8f2ed82-7ff5-4430-829f-aa6ec6fdc421}</Project>
       <Name>ScoopenAPI.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="CIMSDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CIMSDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="CHISDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CHISDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CHISDBModel.edmx.diagram">
+      <DependentUpon>CHISDBModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="MGOSDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MGOSDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MGOSDBModel.edmx.diagram">
+      <DependentUpon>MGOSDBModel.edmx</DependentUpon>
+    </None>
+    <None Include="CIMSDBModel.edmx.diagram">
+      <DependentUpon>CIMSDBModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="SHMSDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SHMSDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="PSOSDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PSOSDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PSOSDBModel.edmx.diagram">
+      <DependentUpon>PSOSDBModel.edmx</DependentUpon>
+    </None>
+    <None Include="SHMSDBModel.edmx.diagram">
+      <DependentUpon>SHMSDBModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CHISDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CHISDBModel.edmx</DependentUpon>
+      <LastGenOutput>CHISDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CHISDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CHISDBModel.edmx</DependentUpon>
+      <LastGenOutput>CHISDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="MGOSDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MGOSDBModel.edmx</DependentUpon>
+      <LastGenOutput>MGOSDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MGOSDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MGOSDBModel.edmx</DependentUpon>
+      <LastGenOutput>MGOSDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="PSOSDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PSOSDBModel.edmx</DependentUpon>
+      <LastGenOutput>PSOSDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PSOSDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PSOSDBModel.edmx</DependentUpon>
+      <LastGenOutput>PSOSDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="ScoopenDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ScoopenDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>CIMSDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="ScoopenDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CIMSDBModel.edmx</DependentUpon>
+      <LastGenOutput>ScoopenDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="SHMSDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SHMSDBModel.edmx</DependentUpon>
+      <LastGenOutput>SHMSDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SHMSDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SHMSDBModel.edmx</DependentUpon>
+      <LastGenOutput>SHMSDBModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

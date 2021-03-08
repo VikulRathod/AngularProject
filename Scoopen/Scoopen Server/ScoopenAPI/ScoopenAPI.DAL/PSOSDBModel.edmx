@@ -1,0 +1,945 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PSOSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminRegister">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ZipCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeleteFile">
+          <Key>
+            <PropertyRef Name="TemplateID" />
+          </Key>
+          <Property Name="TemplateID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DeliveryStatus">
+          <Key>
+            <PropertyRef Name="Delivery_Id" />
+          </Key>
+          <Property Name="Delivery_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Delivery_Status" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblActiveUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="LoginDateTime" Type="smalldatetime" />
+          <Property Name="LogoutDateTime" Type="smalldatetime" />
+          <Property Name="IsActiveSession" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblAgent">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="AgentPassword" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="bigint" />
+          <Property Name="Agent_Address" Type="varchar" MaxLength="100" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PrintShoppyDB.dbo.tblOrders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblOrders">
+          <Key>
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="OrderId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="TemplateId" Type="int" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="250" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblResetPasswordRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ResetRequestDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblUpload">
+          <Key>
+            <PropertyRef Name="TemplateID" />
+          </Key>
+          <Property Name="TemplateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="250" />
+          <Property Name="ImagePath" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblUserAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="LineNumber1" Type="varchar" MaxLength="100" />
+          <Property Name="LineNumber2" Type="varchar" MaxLength="100" />
+          <Property Name="Village" Type="varchar" MaxLength="100" />
+          <Property Name="Taluka" Type="varchar" MaxLength="100" />
+          <Property Name="District" Type="varchar" MaxLength="100" />
+          <Property Name="State" Type="varchar" MaxLength="100" />
+          <Property Name="PinCode" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tblUserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUserRegister">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="RetryAttempts" Type="int" />
+          <Property Name="IsLocked" Type="bit" />
+          <Property Name="LockedDateTime" Type="datetime" />
+          <Property Name="Mobile" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsConfirmedMobile" Type="bit" />
+          <Property Name="IsConfirmedEmail" Type="bit" />
+          <Property Name="RegistrationOtp" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="TemplatSearch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Template Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PrintShoppyDB.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tblOrders__Order__2A164134">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+          <End Role="tblOrders" Type="Self.tblOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="tblOrders">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Templ__2BFE89A6">
+          <End Role="tblUpload" Type="Self.tblUpload" Multiplicity="0..1" />
+          <End Role="tblOrders" Type="Self.tblOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUpload">
+              <PropertyRef Name="TemplateID" />
+            </Principal>
+            <Dependent Role="tblOrders">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__UserI__2B0A656D">
+          <End Role="tblUserInfo" Type="Self.tblUserInfo" Multiplicity="0..1" />
+          <End Role="tblOrders" Type="Self.tblOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblOrders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="searchTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spActivateRegisteredUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Otp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spChangePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GUID" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spChangePasswordUsingCurrentPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CurrentPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="NewPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spGetAllLocakedUserAccounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spIsPasswordResetLinkValid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GUID" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="spRegisterAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="ZipCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spRegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Otp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spResetPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ChangePasswordOnFirstLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="varchar" Mode="In" />
+          <Parameter Name="CurrentPassword" Type="varchar" Mode="In" />
+          <Parameter Name="NewPassword" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConfirmEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Otp" Type="varchar" Mode="In" />
+          <Parameter Name="IsSuccess" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="usp_ConfirmMobile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="Otp" Type="varchar" Mode="In" />
+          <Parameter Name="IsSuccess" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="usp_DeliveryNotification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Delivery_Status" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetOtpFromDatabase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Otp" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="usp_SaveOtpInDatabase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Otp" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="PSOSDBModelStoreContainer">
+          <EntitySet Name="AdminRegister" EntityType="Self.AdminRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeleteFile" EntityType="Self.DeleteFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryStatus" EntityType="Self.DeliveryStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblActiveUsers" EntityType="Self.tblActiveUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAgent" EntityType="Self.tblAgent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblResetPasswordRequests" EntityType="Self.tblResetPasswordRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUpload" EntityType="Self.tblUpload" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserAddress" EntityType="Self.tblUserAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserInfo" EntityType="Self.tblUserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRegister" EntityType="Self.tblUserRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatSearch" EntityType="Self.TemplatSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrders" EntityType="Self.tblOrders" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblOrders].[OrderId] AS [OrderId], 
+    [tblOrders].[UserId] AS [UserId], 
+    [tblOrders].[TemplateId] AS [TemplateId], 
+    [tblOrders].[TemplateName] AS [TemplateName], 
+    [tblOrders].[Quantity] AS [Quantity]
+    FROM [dbo].[tblOrders] AS [tblOrders]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tblOrders__Order__2A164134" Association="Self.FK__tblOrders__Order__2A164134">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="tblOrders" EntitySet="tblOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Templ__2BFE89A6" Association="Self.FK__tblOrders__Templ__2BFE89A6">
+            <End Role="tblUpload" EntitySet="tblUpload" />
+            <End Role="tblOrders" EntitySet="tblOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__UserI__2B0A656D" Association="Self.FK__tblOrders__UserI__2B0A656D">
+            <End Role="tblUserInfo" EntitySet="tblUserInfo" />
+            <End Role="tblOrders" EntitySet="tblOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PSOSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminRegister">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZipCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeleteFile">
+          <Key>
+            <PropertyRef Name="TemplateID" />
+          </Key>
+          <Property Name="TemplateID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DeliveryStatu">
+          <Key>
+            <PropertyRef Name="Delivery_Id" />
+          </Key>
+          <Property Name="Delivery_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Delivery_Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrderStatu">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOrders" Relationship="Self.FK__tblOrders__Order__2A164134" FromRole="OrderStatus" ToRole="tblOrders" />
+        </EntityType>
+        <EntityType Name="tblActiveUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="LoginDateTime" Type="DateTime" Precision="0" />
+          <Property Name="LogoutDateTime" Type="DateTime" Precision="0" />
+          <Property Name="IsActiveSession" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblAgent">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgentPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="Int64" />
+          <Property Name="Agent_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblResetPasswordRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ResetRequestDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUpload">
+          <Key>
+            <PropertyRef Name="TemplateID" />
+          </Key>
+          <Property Name="TemplateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOrders" Relationship="Self.FK__tblOrders__Templ__2BFE89A6" FromRole="tblUpload" ToRole="tblOrders" />
+        </EntityType>
+        <EntityType Name="tblUserAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="LineNumber1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LineNumber2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Village" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Taluka" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PinCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblOrders" Relationship="Self.FK__tblOrders__UserI__2B0A656D" FromRole="tblUserInfo" ToRole="tblOrders" />
+        </EntityType>
+        <EntityType Name="tblUserRegister">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RetryAttempts" Type="Int32" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="LockedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsConfirmedMobile" Type="Boolean" />
+          <Property Name="IsConfirmedEmail" Type="Boolean" />
+          <Property Name="RegistrationOtp" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TemplatSearch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Template_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="TemplateId" Type="Int32" />
+          <Property Name="TemplateName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK__tblOrders__Order__2A164134" FromRole="tblOrders" ToRole="OrderStatus" />
+          <NavigationProperty Name="tblUpload" Relationship="Self.FK__tblOrders__Templ__2BFE89A6" FromRole="tblOrders" ToRole="tblUpload" />
+          <NavigationProperty Name="tblUserInfo" Relationship="Self.FK__tblOrders__UserI__2B0A656D" FromRole="tblOrders" ToRole="tblUserInfo" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK__tblOrders__Order__2A164134">
+          <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="0..1" />
+          <End Role="tblOrders" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="tblOrders">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Templ__2BFE89A6">
+          <End Role="tblUpload" Type="Self.tblUpload" Multiplicity="0..1" />
+          <End Role="tblOrders" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUpload">
+              <PropertyRef Name="TemplateID" />
+            </Principal>
+            <Dependent Role="tblOrders">
+              <PropertyRef Name="TemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__UserI__2B0A656D">
+          <End Role="tblUserInfo" Type="Self.tblUserInfo" Multiplicity="0..1" />
+          <End Role="tblOrders" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblOrders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PSOSDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminRegisters" EntityType="Self.AdminRegister" />
+          <EntitySet Name="DeleteFiles" EntityType="Self.DeleteFile" />
+          <EntitySet Name="DeliveryStatus" EntityType="Self.DeliveryStatu" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+          <EntitySet Name="tblActiveUsers" EntityType="Self.tblActiveUser" />
+          <EntitySet Name="tblAgents" EntityType="Self.tblAgent" />
+          <EntitySet Name="tblResetPasswordRequests" EntityType="Self.tblResetPasswordRequest" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblUploads" EntityType="Self.tblUpload" />
+          <EntitySet Name="tblUserAddresses" EntityType="Self.tblUserAddress" />
+          <EntitySet Name="tblUserInfoes" EntityType="Self.tblUserInfo" />
+          <EntitySet Name="tblUserRegisters" EntityType="Self.tblUserRegister" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRole" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="TemplatSearches" EntityType="Self.TemplatSearch" />
+          <EntitySet Name="tblOrders" EntityType="Self.tblOrder" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK__tblOrders__Order__2A164134" Association="Self.FK__tblOrders__Order__2A164134">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="tblOrders" EntitySet="tblOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Templ__2BFE89A6" Association="Self.FK__tblOrders__Templ__2BFE89A6">
+            <End Role="tblUpload" EntitySet="tblUploads" />
+            <End Role="tblOrders" EntitySet="tblOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__UserI__2B0A656D" Association="Self.FK__tblOrders__UserI__2B0A656D">
+            <End Role="tblUserInfo" EntitySet="tblUserInfoes" />
+            <End Role="tblOrders" EntitySet="tblOrders" />
+          </AssociationSet>
+          <FunctionImport Name="searchTemplate" />
+          <FunctionImport Name="spActivateRegisteredUser" ReturnType="Collection(Int32)">
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Otp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAuthenticateUser" ReturnType="Collection(PSOSDBModel.spAuthenticateUser_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spChangePassword" ReturnType="Collection(Int32)">
+            <Parameter Name="GUID" Mode="In" Type="Guid" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spChangePasswordUsingCurrentPassword" ReturnType="Collection(Int32)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="CurrentPassword" Mode="In" Type="String" />
+            <Parameter Name="NewPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAllLocakedUserAccounts" ReturnType="Collection(PSOSDBModel.spGetAllLocakedUserAccounts_Result)" />
+          <FunctionImport Name="spIsPasswordResetLinkValid" ReturnType="Collection(Int32)">
+            <Parameter Name="GUID" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="spRegisterAdmin">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spRegisterUser" ReturnType="Collection(Int32)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Otp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spResetPassword" ReturnType="Collection(PSOSDBModel.spResetPassword_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ChangePasswordOnFirstLogin" ReturnType="Collection(Int32)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="CurrentPassword" Mode="In" Type="String" />
+            <Parameter Name="NewPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConfirmEmail">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Otp" Mode="In" Type="String" />
+            <Parameter Name="IsSuccess" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConfirmMobile">
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Otp" Mode="In" Type="String" />
+            <Parameter Name="IsSuccess" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeliveryNotification">
+            <Parameter Name="Delivery_Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetOtpFromDatabase">
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Otp" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SaveOtpInDatabase">
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Otp" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spAuthenticateUser_Result">
+          <Property Type="Int32" Name="AccountLocked" Nullable="false" />
+          <Property Type="Int32" Name="Authenticated" Nullable="false" />
+          <Property Type="Int32" Name="RetryAttempts" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetAllLocakedUserAccounts_Result">
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="LockedDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="HoursElapsed" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spResetPassword_Result">
+          <Property Type="Int32" Name="ReturnCode" Nullable="false" />
+          <Property Type="Guid" Name="UniqueId" Nullable="true" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PSOSDBModelStoreContainer" CdmEntityContainer="PSOSDBContext">
+          <EntitySetMapping Name="AdminRegisters">
+            <EntityTypeMapping TypeName="PSOSDBModel.AdminRegister">
+              <MappingFragment StoreEntitySet="AdminRegister">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeleteFiles">
+            <EntityTypeMapping TypeName="PSOSDBModel.DeleteFile">
+              <MappingFragment StoreEntitySet="DeleteFile">
+                <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryStatus">
+            <EntityTypeMapping TypeName="PSOSDBModel.DeliveryStatu">
+              <MappingFragment StoreEntitySet="DeliveryStatus">
+                <ScalarProperty Name="Delivery_Id" ColumnName="Delivery_Id" />
+                <ScalarProperty Name="Delivery_Status" ColumnName="Delivery_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="PSOSDBModel.OrderStatu">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblActiveUsers">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblActiveUser">
+              <MappingFragment StoreEntitySet="tblActiveUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+                <ScalarProperty Name="LogoutDateTime" ColumnName="LogoutDateTime" />
+                <ScalarProperty Name="IsActiveSession" ColumnName="IsActiveSession" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAgents">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblAgent">
+              <MappingFragment StoreEntitySet="tblAgent">
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AgentPassword" ColumnName="AgentPassword" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Agent_Address" ColumnName="Agent_Address" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblResetPasswordRequests">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblResetPasswordRequest">
+              <MappingFragment StoreEntitySet="tblResetPasswordRequests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ResetRequestDateTime" ColumnName="ResetRequestDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUploads">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblUpload">
+              <MappingFragment StoreEntitySet="tblUpload">
+                <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserAddresses">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblUserAddress">
+              <MappingFragment StoreEntitySet="tblUserAddress">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LineNumber1" ColumnName="LineNumber1" />
+                <ScalarProperty Name="LineNumber2" ColumnName="LineNumber2" />
+                <ScalarProperty Name="Village" ColumnName="Village" />
+                <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserInfoes">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblUserInfo">
+              <MappingFragment StoreEntitySet="tblUserInfo">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRegisters">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblUserRegister">
+              <MappingFragment StoreEntitySet="tblUserRegister">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RetryAttempts" ColumnName="RetryAttempts" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="LockedDateTime" ColumnName="LockedDateTime" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsConfirmedMobile" ColumnName="IsConfirmedMobile" />
+                <ScalarProperty Name="IsConfirmedEmail" ColumnName="IsConfirmedEmail" />
+                <ScalarProperty Name="RegistrationOtp" ColumnName="RegistrationOtp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatSearches">
+            <EntityTypeMapping TypeName="PSOSDBModel.TemplatSearch">
+              <MappingFragment StoreEntitySet="TemplatSearch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Template_Name" ColumnName="Template Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="PSOSDBModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrders">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="PSOSDBModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="searchTemplate" FunctionName="PSOSDBModel.Store.searchTemplate" />
+          <FunctionImportMapping FunctionImportName="spActivateRegisteredUser" FunctionName="PSOSDBModel.Store.spActivateRegisteredUser" />
+          <FunctionImportMapping FunctionImportName="spAuthenticateUser" FunctionName="PSOSDBModel.Store.spAuthenticateUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PSOSDBModel.spAuthenticateUser_Result">
+                <ScalarProperty Name="AccountLocked" ColumnName="AccountLocked" />
+                <ScalarProperty Name="Authenticated" ColumnName="Authenticated" />
+                <ScalarProperty Name="RetryAttempts" ColumnName="RetryAttempts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spChangePassword" FunctionName="PSOSDBModel.Store.spChangePassword" />
+          <FunctionImportMapping FunctionImportName="spChangePasswordUsingCurrentPassword" FunctionName="PSOSDBModel.Store.spChangePasswordUsingCurrentPassword" />
+          <FunctionImportMapping FunctionImportName="spGetAllLocakedUserAccounts" FunctionName="PSOSDBModel.Store.spGetAllLocakedUserAccounts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PSOSDBModel.spGetAllLocakedUserAccounts_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LockedDateTime" ColumnName="LockedDateTime" />
+                <ScalarProperty Name="HoursElapsed" ColumnName="HoursElapsed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spIsPasswordResetLinkValid" FunctionName="PSOSDBModel.Store.spIsPasswordResetLinkValid" />
+          <FunctionImportMapping FunctionImportName="spRegisterAdmin" FunctionName="PSOSDBModel.Store.spRegisterAdmin" />
+          <FunctionImportMapping FunctionImportName="spRegisterUser" FunctionName="PSOSDBModel.Store.spRegisterUser" />
+          <FunctionImportMapping FunctionImportName="spResetPassword" FunctionName="PSOSDBModel.Store.spResetPassword">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PSOSDBModel.spResetPassword_Result">
+                <ScalarProperty Name="ReturnCode" ColumnName="ReturnCode" />
+                <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ChangePasswordOnFirstLogin" FunctionName="PSOSDBModel.Store.usp_ChangePasswordOnFirstLogin" />
+          <FunctionImportMapping FunctionImportName="usp_ConfirmEmail" FunctionName="PSOSDBModel.Store.usp_ConfirmEmail" />
+          <FunctionImportMapping FunctionImportName="usp_ConfirmMobile" FunctionName="PSOSDBModel.Store.usp_ConfirmMobile" />
+          <FunctionImportMapping FunctionImportName="usp_DeliveryNotification" FunctionName="PSOSDBModel.Store.usp_DeliveryNotification" />
+          <FunctionImportMapping FunctionImportName="usp_GetOtpFromDatabase" FunctionName="PSOSDBModel.Store.usp_GetOtpFromDatabase" />
+          <FunctionImportMapping FunctionImportName="usp_SaveOtpInDatabase" FunctionName="PSOSDBModel.Store.usp_SaveOtpInDatabase" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
