@@ -143,6 +143,7 @@
     <Compile Include="Controllers\Account\PasswordManageController.cs" />
     <Compile Include="Controllers\Account\RegisterController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\VikulDemoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
