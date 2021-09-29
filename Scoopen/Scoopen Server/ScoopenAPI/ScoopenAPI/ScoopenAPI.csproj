@@ -137,15 +137,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Account\AuthTestController.cs" />
     <Compile Include="Controllers\Account\LoginController.cs" />
     <Compile Include="Controllers\Account\PasswordManageController.cs" />
     <Compile Include="Controllers\Account\RegisterController.cs" />
+    <Compile Include="Controllers\ArjunController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VikulDemoController.cs" />
     <Compile Include="Controllers\VitthalController.cs" />
